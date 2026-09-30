@@ -10,17 +10,31 @@ public class Main {
         System.out.println("Digite o nome do produto:");
         String nomeDoProduto = produto.nextLine();
 
-        System.out.println("Digite o valaor do Produto:");
+        System.out.println("Digite o valor do Produto:");
         Double precoDoProduto = produto.nextDouble();
 
         System.out.println("Digite a quantidade em estoque do produto:");
         int estoqueProduto = produto.nextInt();
 
-                System.out.println("\n =====PRODUTO CADASTRADO=====");
-                System.out.println("NOME DO PRODUTO: "+ nomeDoProduto);
-                System.out.println("VALOR DO PRODUTO: "+ precoDoProduto);
-                System.out.println("QUANTIDADE DO PRODUTO EM ESTOQUE: "+ estoqueProduto);
+            System.out.println("\n =====PRODUTO CADASTRADO=====");
+            System.out.println("NOME DO PRODUTO: "+ nomeDoProduto);
+            System.out.println("VALOR DO PRODUTO: "+ precoDoProduto);
+            System.out.println("QUANTIDADE DO PRODUTO EM ESTOQUE: "+ estoqueProduto);
+
+
+        double valorTotalEstoque = precoDoProduto * estoqueProduto;
+
+        if (estoqueProduto > 5) {
+            System.out.println("\n =====Estoque Ok !!!====");
+        }
+
+        else  {
+            System.out.println("=====Estoque Baixo!!!=====");
+        }
+
+        System.out.println("\n VALOR DO ESTOQUE: " + valorTotalEstoque);
 
         produto.close();
+
     }
 }
