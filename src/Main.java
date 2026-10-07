@@ -2,12 +2,14 @@
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 import javax.swing.plaf.synth.SynthTextAreaUI;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
 
         Scanner produto = new Scanner(System.in);
         int opcao = -1;
+        ArrayList<String> listaDeProdutos = new ArrayList<>();
 
         do {
 
@@ -19,9 +21,13 @@ public class Main {
             switch (opcao) {
                 case 1:
 
-                    cadastro(produto);
+                    cadastro(produto,listaDeProdutos);
                     break;
 
+                case 2:
+
+                    listarProdutos(listaDeProdutos);
+                    break;
 
                 case 0:
                     System.out.println("===Saindo do Cadastro.===");
@@ -43,11 +49,12 @@ public class Main {
 
         System.out.println("\n ===Menu de Cadastro de Produto===");
         System.out.println("1 - Cadastro de Produto");
+        System.out.println("2 - Lista de Produto");
         System.out.println("0 - Sair");
         System.out.println("Escolha uma das alternativas:");
     }
 
-    public static void cadastro(Scanner produto){
+    public static void cadastro(Scanner produto, ArrayList<String> listaDeProdutos){
 
         System.out.println("Digite o nome do produto:");
         String nomeDoProduto = produto.nextLine();
@@ -73,11 +80,27 @@ public class Main {
 
         System.out.println("\n VALOR DO ESTOQUE: " + valorTotalEstoque);
 
+        String produtoCadastrado = "Nome:" + nomeDoProduto + "| Preco:" + precoDoProduto + "| Quantidade:" + estoqueProduto;
+
+        listaDeProdutos.add(produtoCadastrado);
+
 
     }
 
     public  static double valorDoEstoque( double preco, int estoque){
         return preco * estoque;
+
+    }
+
+    public static void listarProdutos(ArrayList<String> lista){
+
+        if (lista.isEmpty()){
+            System.out.println("=== Nenhum Produto  cadastrado ainda!!! ===");
+        } else {
+            System.out.println("\n === Lista de Produtos ===");
+            for (String p : lista)
+                System.out.println("- " + p);
+        }
 
     }
 
