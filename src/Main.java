@@ -79,11 +79,30 @@ public class Main {
         System.out.println("Digite o nome do produto:");
         String nomeDoProduto = produto.nextLine();
 
-        System.out.println("Digite o valor do Produto:");
+        while (nomeDoProduto.trim().isEmpty()){
+            System.out.println("===Nome Invalido!!! digite novamente===");
+            System.out.println("Digite o Nome do Produto Novamente!!!");
+            nomeDoProduto = produto.nextLine();
+        }
+
+        System.out.println("Digite o Valor do Produto:");
         Double precoDoProduto = produto.nextDouble();
+
+        while (precoDoProduto <= 0){
+            System.out.println("===Valor Invalido!!! digite novamente===");
+            System.out.println("Digite o Valor do Produto(Sem zero!!!)");
+            precoDoProduto = produto.nextDouble();
+        }
 
         System.out.println("Digite a quantidade em estoque do produto:");
         int estoqueProduto = produto.nextInt();
+
+        while (estoqueProduto < 0){
+            System.out.println("===Estoque Invalido!!! digite novamente===");
+            System.out.println("Digite o Estoque do Produto novamente !!!");
+            estoqueProduto = produto.nextInt();
+        }
+
 
         System.out.println("\n =====PRODUTO CADASTRADO=====");
         System.out.println("NOME DO PRODUTO: " + nomeDoProduto);
@@ -169,14 +188,32 @@ public class Main {
                 System.out.println("Digite o novo nome do seu produto:");
                 String novoNome = produto.nextLine();
 
+                while (novoNome.trim().isEmpty()){
+                    System.out.println("===Nome Invalido!!! digite novamente===");
+                    System.out.println("Digite o Nome do Produto Novamente!!!");
+                    novoNome = produto.nextLine();
+                }
+
                 System.out.println("Digite o novo valor do produto:");
                 Double valorNovo = produto.nextDouble();
+
+                while (valorNovo <= 0){
+                    System.out.println("===Valor Invalido!!! digite novamente===");
+                    System.out.println("Digite o Valor do Produto(Sem zero!!!)");
+                    valorNovo = produto.nextDouble();
+                }
 
                 System.out.println("Digite o nova quantidade do estoque:");
                 int estoqueNovo = produto.nextInt();
                 produto.nextLine();
 
-            String produtoAtualizado = "Nome:" + novoNome + "|Valor:"+ valorNovo + "|Estoque" + estoqueNovo;
+                while (estoqueNovo < 0){
+                    System.out.println("===Estoque Invalido!!! digite novamente===");
+                    System.out.println("Digite o Estoque do Produto novamente !!!");
+                    estoqueNovo = produto.nextInt();
+                }
+
+                String produtoAtualizado = "Nome:" + novoNome + "|Valor:"+ valorNovo + "|Quantidade:" + estoqueNovo;
 
                 lista.set(indice, produtoAtualizado);
 
