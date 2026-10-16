@@ -44,6 +44,11 @@ public class Main {
 
                 case 5:
 
+                    relatorioEstoque(listaDeProdutos);
+                    break;
+
+                case 6:
+
                     excluir(produto, listaDeProdutos);
                     break;
 
@@ -70,7 +75,8 @@ public class Main {
         System.out.println("2 - Lista de Produto");
         System.out.println("3 - Buscar Produto");
         System.out.println("4 - Alterar Produto");
-        System.out.println("5 - Excluir Produto");
+        System.out.println("5 - Relatorio de estoque baixc");
+        System.out.println("6 - Excluir Produto");
         System.out.println("0 - Sair");
         System.out.println("Escolha uma das alternativas:");
     }
@@ -99,8 +105,9 @@ public class Main {
         }
 
         System.out.println("\n VALOR DO ESTOQUE: " + valorTotalEstoque);
+        String status = (estoqueProduto <= 5) ? "ESTOQUE BAIXO" : "ESTOQUE OK";
 
-        String produtoCadastrado = "Nome:" + nomeDoProduto + "| Preco:" + precoDoProduto + "| Quantidade:" + estoqueProduto;
+        String produtoCadastrado = "Nome:" + nomeDoProduto + "| Preco:" + precoDoProduto + "| Quantidade:" + estoqueProduto + "| Status:" +status;
 
         listaDeProdutos.add(produtoCadastrado);
 
@@ -172,6 +179,8 @@ public class Main {
             Double valorNovo = lerValor(produto);
 
             int estoqueNovo = lerestoque(produto);
+
+            String status = (estoqueNovo <= 5) ? "ESTOQUE BAIXO" : "ESTOQUE OK";
 
             String produtoAtualizado = "Nome:" + novoNome + "|Valor:" + valorNovo + "|Quantidade:" + estoqueNovo;
 
@@ -247,6 +256,32 @@ public class Main {
         return estoque;
     }
 
+    public static void relatorioEstoque(ArrayList<String> listaDeProduto) {
+
+        if (listaDeProduto.isEmpty()) {
+            System.out.println("===Nenhum Produto Cadastrado!===");
+            return;
+        }
+
+        System.out.println("\n ====Quantidade de produtos cadastrados:" + listaDeProduto.size() + "!!!===");
+        System.out.println("\n ====Lista de Produtos com estoque baixo!!!===");
+
+        boolean estoquebaixo = false;
+
+        for (String p : listaDeProduto) {
+            if (p.contains("ESTOQUE BAIXO")) {
+                System.out.println(" - " + p);
+                estoquebaixo = true;
+            }
+        }
+        if (!estoquebaixo) {
+            System.out.println("Nenhum produto com estoque baixo! Todos estão abastecidos.");
+
+
+        }
+    }
 }
+
+
 
 
